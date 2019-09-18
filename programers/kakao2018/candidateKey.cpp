@@ -1,4 +1,4 @@
-//개같은 문제! 다시 도전
+//다시 도전
 
 #include <string>
 #include <vector>
