@@ -82,7 +82,7 @@ void doDFS(int v)
         visited[cur_vertex] = 1;
 
         //인접한 vertex를 찾아 stack에 넣어준다.
-        for(int i=cur_vertex*vertex_num;i<cur_vertex*vertex_num+vertex_num;i++)
+        for(int i=cur_vertex*vertex_num;i<cur_vertex*vertex_num+vertex_num;i++) //반복은 항상 vertex_num만큼
         {
             //edge로 연결이 되어 있다면
             if(graph[i] == 1)

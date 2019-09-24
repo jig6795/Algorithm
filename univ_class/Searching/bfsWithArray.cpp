@@ -87,7 +87,7 @@ void doBFS(int v)
         visited[cur_vertex] = 1;
         
         //인접한 vertex들을 찾아서 Queue에 enqueue
-        for(int i=cur_vertex*vertex_num;i<cur_vertex*vertex_num+vertex_num;i++)
+        for(int i=cur_vertex*vertex_num;i<cur_vertex*vertex_num+vertex_num;i++) //반복은 항상 vertex_num만큼
         {
             if(graph[i] == 1)
             {
