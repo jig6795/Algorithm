@@ -11,9 +11,10 @@ vector<int> solution(vector<int> array, vector< vector<int> > commands) {
 
     for(int i=0;i<commands.size();i++)
     {
-        int start = commands[i][0]-1;
-        int back = commands[i][1]-1;
+        int start = commands[i][0]-1; //i
+        int back = commands[i][1]-1; //j
 
+        //임시 벡터에 새로 저장
         for(int i=start;i<=back;i++)
         {
             temp.push_back(array[i]);
