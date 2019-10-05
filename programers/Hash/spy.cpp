@@ -7,24 +7,24 @@ using namespace std;
 
 int solution(vector<vector<string> > clothes) {
     int answer = 0;
-    map<string, int> clothe;
-    int total = 1;
-    int cnt = 0;
+    map<string, int> clothe; //각 종류에 몇 가지가 들어있는지 짝을 지어준다.
+    int total = 1; //곱해주기 위한 변수
     
     for(int i=0;i<clothes.size();i++)
     {
         for(auto it = clothe.begin();it != clothe.end();it++)
         {
-            if(clothes[i][1] == it->first)
+            if(clothes[i][1] == it->first) //종류가 같은 경우 +1
             {
                 it->second += 1;
                 break;
             }
         }
-        clothe.insert(pair<string, int> (clothes[i][1],1));
-        cnt += 1;
+        clothe.insert(pair<string, int> (clothes[i][1],1)); //종류를 처음 등록하는 경우
     }
     
+    //각 종류의 개수에 입지 않은 경우를 더해서 곱을 해준 뒤
+    //하나도 입지 않은 경우를 제외시켜 지켜줍니다.
     for(auto it = clothe.begin();it != clothe.end();it++)
     {
         total *= (it->second + 1);
