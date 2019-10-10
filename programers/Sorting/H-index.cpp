@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool compare(int a,int b) //오름차순으로 정렬
+bool compare(int a,int b) //내림차순으로 정렬
 {
     return a > b;
 }
@@ -39,11 +39,11 @@ int solution(vector<int> citations) {
 int main(void)
 {
     vector<int> citations;
+    citations.push_back(4);
     citations.push_back(3);
-    citations.push_back(0);
-    citations.push_back(6);
-    citations.push_back(1);
-    citations.push_back(5);
+    citations.push_back(3);
+    citations.push_back(3);
+    citations.push_back(3);
 
     cout << solution(citations) << endl;
 
