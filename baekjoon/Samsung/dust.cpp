@@ -107,6 +107,7 @@ void sumDust(void)
 
 //
 // 반 시계 방향 회전
+// 공기 청정기를 만나면 0으로 초기화가 된다.
 //
 void reverseClock(int first)
 {
@@ -166,6 +167,7 @@ void reverseClock(int first)
 
 //
 // 시계 방향 회전
+// 공기 청정기를 만나면 0으로 초기화된다.
 //
 void clock(int second)
 {
