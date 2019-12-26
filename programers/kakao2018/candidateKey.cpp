@@ -1,42 +1,48 @@
-//다시 도전
-
+//실패
 #include <string>
 #include <vector>
 #include <iostream>
-#include <map>
 
 using namespace std;
 
-int solution(vector<vector<string> > relation) {
-    int answer = 0;
-    bool check = false; //후보키인지 아닌지 검사
-    map<int, bool> attribute;
+bool checkAttribute[8] = {true}; //속성에 대해서 사용가능한 경우, true
+int count_Key = 0; //후보키의 개수
 
-    //하나의 속성으로 후보키가 될 수 있는 경우 검사 & 최소성을 만족하므로 다음 검사에서 제외
-    for(int i=0;i<relation.size();i++) 
+//
+// 각 속성에서 tuple을 비교해서 유일성이 만족하면 attribute[]에 false로 바꿈
+//
+void compareTuple(vector<string> attribute, int num)
+{
+    for(int i=0;i<attribute.size();i++)
     {
-        for(int j=0;j<relation[i].size();j++)
+        for(int j=0;j<attribute.size();j++)
         {
-            for(int k=j+1;k<relation[i].size();k++)
+            if(attribute[i] == attribute[j] && i != j)
             {
-                if(relation[i][j] == relation[i][k]) //유일성이 만족하지 않은 경우 바로 다음 속성으로 넘어가서 검사
-                {
-                    check = true;
-                    i++;
-                    j = -1;
-                    break;
-                }
+                cout << "Error : Same Tuple is existed" << endl;
+                return;
             }
         }
+    }
+    //cout << num << endl;
+    checkAttribute[num] = false;
+    count_Key += 1;
+    return;
+}
 
-        if(!check) //후보키인 경우 +1
-        {
-            attribute[i] = true;
-            answer++;
-            check = false;
-        }
+int solution(vector<vector<string> > relation) {
+    int answer = 0;
+
+    //속성 1개로 유일성을 만족하는 경우
+    for(int i=0;i<relation.size();i++)
+    {
+        compareTuple(relation[i],i);
     }
 
+    //속성 1개로 만족하지 않는 경우
+    
+    
+    answer = count_Key;
     return answer;
 }
 
