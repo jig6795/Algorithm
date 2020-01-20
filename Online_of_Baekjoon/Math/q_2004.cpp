@@ -1,7 +1,6 @@
 // Q2004
 // 조합 0의 개수
-// 시간복잡도 - O(n^2)
-// 실패 - 시간초과
+// 시간복잡도 - O(n)
 
 #include <iostream>
 using namespace std;
@@ -11,42 +10,46 @@ int main(void)
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    long long n,m;
-    cin >> n >> m;
+    int m, n;
+    long long num2 = 0;
+    long long num5 = 0;
 
-    if(n-m > m) //조합 공식
+    cin >> m >> n;
+
+    for(long long i=2;i<=m;i*=2)
     {
-        m = n-m;
+        num2 += m/i;
+    }
+    for(long long i=2;i<=(m-n);i*=2)
+    {
+        num2 -= (m-n)/i;
+    }
+    for(long long i=2;i<=n;i*=2)
+    {
+        num2 -= n/i;
+    }
+    
+    for(long long i=5;i<=m;i*=5)
+    {
+        num5 += m/i;
+    }
+    for(long long i=5;i<=(m-n);i*=5)
+    {
+        num5 -= (m-n)/i;
+    }
+    for(long long i=5;i<=n;i*=5)
+    {
+        num5 -= n/i;
     }
 
-    long long countOfUp = 0;
-    long long countOfDown = 0;
-
-    for(int i=1;i<=m;i++)
+    if(num5 > num2)
     {
-        long long tempDown = i;
-        long long tempUp = (n+1) - i;
-
-        if(tempDown%5 == 0)
-        {
-            while(tempDown%5 == 0)
-            {
-                tempDown = tempDown/5;
-                countOfDown += 1;
-            }
-        }
-     
-        if(tempUp%5 == 0)
-        {
-            while(tempUp%5 == 0)
-            {
-                tempUp = tempUp/5;
-                countOfUp += 1;
-            }
-        }
+        cout << num2 << '\n';
     }
-
-    cout << countOfUp - countOfDown << '\n';
+    else
+    {
+        cout << num5 << '\n';
+    }
 
     return 0;
 }
